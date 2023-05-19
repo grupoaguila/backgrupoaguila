@@ -3,7 +3,7 @@ const { getPer, getCases } = require('./llamadosFirebase.js')
 //GET
 const traerTodosLosPeritos=async(req, res, next)=>{
       const peritosFirebase= await getPer()
-      const cantidadPeritos=peritosFirebase.length()
+      const cantidadPeritos=peritosFirebase.length
       console.log('peritos de firebase=>', cantidadPeritos);
       const peritoCreado = await Peritos.bulkCreate(
         peritosFirebase.map(e=>{

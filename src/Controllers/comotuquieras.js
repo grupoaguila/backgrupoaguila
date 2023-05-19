@@ -4,13 +4,14 @@ const { getStorage, ref, uploadBytes, getDownloadURL } =require ("firebase/stora
 const { v4 } =require ("uuid");
 // Añade aquí tus credenciales
 const firebaseConfig = {
-  apiKey: "AIzaSyAhvoYySiSyE__7zJbxC7GW6Mi5RQ_5UqE",
-  authDomain: "grupo-aguila.firebaseapp.com",
-  projectId: "grupo-aguila",
-  storageBucket: "grupo-aguila.appspot.com",
-  messagingSenderId: "588341841468",
-  appId: "1:588341841468:web:c3e33ac329d587a575fd39",
-  measurementId: "G-21VGVDYL1Z"
+  apiKey: "AIzaSyC3xdTk3oik3R-_uabiSPjXlLtsiMbBKdM",
+  authDomain: "grupoaguila-ecc10.firebaseapp.com",
+  databaseURL: "https://grupoaguila-ecc10-default-rtdb.firebaseio.com",
+  projectId: "grupoaguila-ecc10",
+  storageBucket: "grupoaguila-ecc10.appspot.com",
+  messagingSenderId: "252043465397",
+  appId: "1:252043465397:web:2b47f5f8cb5f9d4c5764fc",
+  measurementId: "G-7DQD18EFXK"
 };
 
 // Inicializamos la aplicación y la guardamos en firebaseApp
