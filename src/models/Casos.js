@@ -10,7 +10,9 @@ module.exports = (sequelize) => {
       defaultValue: DataTypes.UUIDV1,
       allowNull: false,
     },
-   Compañia:{type:DataTypes.TEXT,},
+
+    Compañia:{type:DataTypes.TEXT,},
+
     Marca:{type:DataTypes.TEXT,},
     Nombre:{type:DataTypes.TEXT,},
     Numero:{type:DataTypes.TEXT,},
