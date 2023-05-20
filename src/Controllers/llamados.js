@@ -48,11 +48,14 @@ const traerTodosLosCasos=async(req, res, next)=>{
 }
 const peritos = async (req, res, next)=>{
     try {
+      console.log('llamado a peritos');
         const peritos = await Peritos.findAll({})
-        if (peritos.length === 0)
-        return res
-          .status(404)
-          .send({ message: "No se encontraron peritos" });
+        console.log('PERITOS===>',peritos);
+        if (peritos.length === 0){
+          return res
+            .status(404)
+            .send({ message: "No se encontraron peritos" });
+        }
       res.status(200).send(peritos);
     } catch (error) {
         next(error)
@@ -61,11 +64,13 @@ const peritos = async (req, res, next)=>{
 const casos = async (req, res, next)=>{
     try {
         const casos = await Casos.findAll({})
+        const cases=casos.filter(e=>e.bandera!=='true')
+        // console.log('cases==>', cases.length);
         if (casos.length === 0)
         return res
           .status(404)
           .send({ message: "No se encontraron casos" });
-      res.status(200).send(casos);
+      res.status(200).send(cases);
     } catch (error) {
         next(error)
     }
@@ -131,8 +136,10 @@ const modificarperito= async(req, res, next) => {
 //DELETE
 const eliminarperito= async(req, res, next) => {
     try {
-        const {id} = req.params
-        const perito =await Peritos.destroy({where:{id}})
+      const {id} = req.params
+      console.log('llego id a eliminar=>', id);
+        const perito =await Peritos.destroy({where:id==={id}})
+        console.log('perito a eliminar=>', perito);
         res.status(201).send({ message: "Perito eliminado con exito!" });
     } catch (error) {
         next(error)
