@@ -23,6 +23,7 @@ module.exports = (sequelize) => {
     notas:{type:DataTypes.TEXT,},
     perito:{type:DataTypes.TEXT,},
     taller:{type:DataTypes.TEXT,},
+    bandera:{type:DataTypes.TEXT,},
 
   },{
     freezeTableName: true,
