@@ -22,7 +22,7 @@ const traerTodosLosPeritos=async(req, res, next)=>{
 const traerTodosLosCasos=async(req, res, next)=>{
       const casosFirebase= await getCases()
       const cantidadCasos=casosFirebase.length
-      console.log('casos de firebase=>', casosFirebase);
+      // console.log('casos de firebase=>', casosFirebase);
       const casoCreado = await Casos.bulkCreate(
         casosFirebase.map(e=>{
           return{
@@ -42,15 +42,15 @@ const traerTodosLosCasos=async(req, res, next)=>{
           }
 
       }));
-      console.log('enviados a la BD', cantidadCasos);
+      // console.log('enviados a la BD', cantidadCasos);
       res.status(201).send({ message: "Casos creado con exito!" });
       
 }
 const peritos = async (req, res, next)=>{
     try {
-      console.log('llamado a peritos');
+      // console.log('llamado a peritos');
         const peritos = await Peritos.findAll({})
-        console.log('PERITOS===>',peritos);
+        // console.log('PERITOS===>',peritos);
         if (peritos.length === 0){
           return res
             .status(404)
@@ -78,7 +78,7 @@ const casos = async (req, res, next)=>{
 
 //POST
 const crearCasos= async (req, res, next) => {
-    console.log("body crear usuario===>>>", req.body);
+    // console.log("body crear usuario===>>>", req.body);
     try {
       
       const casoCreado = await Casos.create({
@@ -93,15 +93,15 @@ const crearCasos= async (req, res, next) => {
     }
   };
 const crearPerito= async (req, res, next) => {
-    console.log("body crear perito===>>>", req.body);
+    // console.log("body crear perito===>>>", req.body);
     try {
-      console.log('peritos1=>');
+      // console.log('peritos1=>');
       
       const peritoCreado = await Peritos.create({
         ...req.body,
       });
        res.status(201).send({ message: "Perito creado con exito!" });
-      console.log('peritos2=>', peritoCreado);
+      // console.log('peritos2=>', peritoCreado);
   
       if (!peritoCreado)
         return res.status(418).send({ message: "El perito no se pudo crear" });
@@ -137,9 +137,9 @@ const modificarperito= async(req, res, next) => {
 const eliminarperito= async(req, res, next) => {
     try {
       const {id} = req.params
-      console.log('llego id a eliminar=>', id);
+      // console.log('llego id a eliminar=>', id);
         const perito =await Peritos.destroy({where:{id}})
-        console.log('perito a eliminar=>', perito);
+        // console.log('perito a eliminar=>', perito);
         res.status(201).send({ message: "Perito eliminado con exito!" });
     } catch (error) {
         next(error)
