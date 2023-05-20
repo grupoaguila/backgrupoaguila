@@ -138,7 +138,7 @@ const eliminarperito= async(req, res, next) => {
     try {
       const {id} = req.params
       console.log('llego id a eliminar=>', id);
-        const perito =await Peritos.destroy({where:id==={id}})
+        const perito =await Peritos.destroy({where:{id}})
         console.log('perito a eliminar=>', perito);
         res.status(201).send({ message: "Perito eliminado con exito!" });
     } catch (error) {
