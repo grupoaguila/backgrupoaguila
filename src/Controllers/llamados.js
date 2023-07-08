@@ -78,7 +78,7 @@ const casos = async (req, res, next)=>{
 const casosEliminados = async (req, res, next)=>{
   try {
       const casos = await Casos.findAll({})
-      const cases=casos.filter(e=>e.bandera!=='false')
+      const cases=casos.filter(e=>e.bandera==="true")
       // console.log('cases==>', cases.length);
       if (casos.length === 0)
       return res
