@@ -75,6 +75,20 @@ const casos = async (req, res, next)=>{
         next(error)
     }
 }
+const casosEliminados = async (req, res, next)=>{
+  try {
+      const casos = await Casos.findAll({})
+      const cases=casos.filter(e=>e.bandera!=='false')
+      // console.log('cases==>', cases.length);
+      if (casos.length === 0)
+      return res
+        .status(404)
+        .send({ message: "No se encontraron casos" });
+    res.status(200).send(cases);
+  } catch (error) {
+      next(error)
+  }
+}
 
 //POST
 const crearCasos= async (req, res, next) => {
@@ -164,5 +178,6 @@ module.exports ={
   eliminarCaso,
   eliminarperito,
   traerTodosLosPeritos,
-  traerTodosLosCasos
+  traerTodosLosCasos,
+  casosEliminados
 }
