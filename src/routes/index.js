@@ -1,6 +1,6 @@
 const { Router } = require("express");
 
-const {crearPerito, peritos, traerTodosLosPeritos, casos, traerTodosLosCasos, crearCasos, modificarperito, modificarCaso, eliminarCaso, eliminarperito} = require('../Controllers/llamados')
+const {crearPerito, peritos,casosEliminados ,traerTodosLosPeritos, casos, traerTodosLosCasos, crearCasos, modificarperito, modificarCaso, eliminarCaso, eliminarperito} = require('../Controllers/llamados')
 
 const router = Router();
 
@@ -11,8 +11,8 @@ const router = Router();
 router.get("/peritos", peritos);
 router.get("/peritosfirebase", traerTodosLosPeritos);
 router.get("/casosfirebase", traerTodosLosCasos);
-router.get("/casos", casos);
-
+router.get("/casos", casos);//
+router.get("/casosEliminados", casosEliminados)
 // //***POSTS*****/
 
 router.post('/perito',crearPerito);
