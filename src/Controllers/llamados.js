@@ -1,12 +1,14 @@
 const{Peritos, Casos}=require('../db.js')
 const { getPer, getCases } = require('./llamadosFirebase.js')
+
+const url = "https://grupoaguila.onrender.com"
 //GET
 const traerTodosLosPeritos=async(req, res, next)=>{
       const peritosFirebase= await getPer()
-      const cantidadPeritos=peritosFirebase.length
+      const cantidadPeritos=peritosFirebase?.length
       console.log('peritos de firebase=>', cantidadPeritos);
       const peritoCreado = await Peritos.bulkCreate(
-        peritosFirebase.map(e=>{
+        peritosFirebase?.map(e=>{
           return{
             nombre:e.nombre,
             email:e.email,
@@ -21,10 +23,10 @@ const traerTodosLosPeritos=async(req, res, next)=>{
 }
 const traerTodosLosCasos=async(req, res, next)=>{
       const casosFirebase= await getCases()
-      const cantidadCasos=casosFirebase.length
+      const cantidadCasos=casosFirebase?.length
       // console.log('casos de firebase=>', casosFirebase);
       const casoCreado = await Casos.bulkCreate(
-        casosFirebase.map(e=>{
+        casosFirebase?.map(e=>{
           return{
            localidad:e.localidad,
             Vencimiento:e.Vencimiento,
