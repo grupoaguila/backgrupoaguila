@@ -1,6 +1,6 @@
 const { collection, getFirestore, getDocs, query, doc, getDoc, addDoc, deleteDoc, updateDoc, setDoc, where} =require( "firebase/firestore");
  const{ db } =require( "./comotuquieras");
-
+ const axios = require('axios');
 
 // CREATE
 const createPer = async(obj) => {
@@ -27,17 +27,14 @@ const updatePeritos = async (id, obj) => {
 
 // READ
 const getPer= async ()  => {
-    const colRef =  collection(db, 'Peritos');
-    const result = await getDocs(query(colRef));
-    return getArrayFromCollection(result)
-}
+  const peritos= await axios.get('https://aguillagrupo5.onrender.com/peritos')
+  console.log('peritos', peritos)
+    return peritos.data
+  }
 
 const getCases= async ()  => {
-    const colRef = collection(db, 'Casos');
-    
-    const result = await getDocs(query(colRef));
-    
-    return getArrayFromCollection(result);
+  const casos= await axios.get("https://aguillagrupo5.onrender.com/casos")
+  return casos.data
 }
 
 // READ WITH WHERE
